@@ -1,0 +1,130 @@
+<html>
+
+<head>
+    <title>Manual
+    </title>
+    <style>
+        img {
+            box-shadow: 0 0 20px rgba(0, 0, 0, 0.31), 0 8.4px 21px rgba(0, 0, 0, .16428571428571428);
+        }
+    </style>
+</head>
+
+<body>
+    <h1>Как добавить кнопку и прописать ей instance name</h1>
+    <h2>Кнопка на главной сцене</h2>
+    <ol>
+        <li>
+            <p>
+                Создайте на сцене какой-нибудь объект, например, с помощью Rectangle Tool.<br>
+                Затем выделите его, и в контекстном меню выберите "Convert to Symbol..."
+
+            </p>
+            <p>
+                <img class="zoomable" style='width:40%;' src="buttons_img/1.png" />
+            </p>
+        </li>
+        <li>
+            <p>
+                В появившемся диалоговом окне выберите Type: Button, Name можно оставить без изменений.<br>
+                После этого нажимем Ok.
+
+            </p>
+            <p>
+                <img class="zoomable" style='width:40%;' src="buttons_img/2.png" />
+            </p>
+        </li>
+        <li>
+            <p>
+                Теперь нужно назначить этой кнопке Instance Name, чтобы работал клик.
+
+            </p>
+            <p>
+                <img class="zoomable" style='width:40%;' src="buttons_img/3.png" />
+            </p>
+        </li>
+        <li>
+            <p>
+                Код, который мы пропишем в Actions для этой кнопки будет выглядеть следующим образом: <br>
+                <code><br>
+                 window.buttons.push( <br>
+                //Пропишите через запятую пути кнопок, добавив вначале this<br>
+                this.button1<br>
+                //Конец места для кнопок <br>
+                );<br> 
+                window.isButtonsReady = true; <br><br> 
+                </code>
+
+            </p>
+            <p>
+                <img class="zoomable" style='width:40%;' src="buttons_img/4.png" />
+            </p>
+        </li>
+    </ol>
+    <h2>Вложенная кнопка</h2>
+    <ol>
+        <li>
+            <p>
+                Допустим, что наша кнопка находится внутри другого символа, например внутри Movie Clip<br>
+                В данном примере этому Movie Clip задано Instance Name "name"
+            </p>
+            <p>
+                <img class="zoomable" style='width:40%;' src="buttons_img/5.png" />
+            </p>
+            <p>По двойному клику мы попадаем внутрь name и видим, что там вложенная кнопка.</p>
+            <p>
+                <img class="zoomable" style='width:40%;' src="buttons_img/6.png" />
+            </p>
+        </li>
+        <li>
+            <p>
+                Когда мы будем прописывать в Actions путь до такой кнопки, то нам нужно будет добавить Instance Name объекта после this, в который она вложена:<br>
+                <code><br>
+                 window.buttons.push( <br>
+                //Пропишите через запятую пути кнопок, добавив вначале this<br>
+                this.name.button1<br>
+                //Конец места для кнопок <br>
+                );<br> 
+                window.isButtonsReady = true; <br><br> 
+                </code>
+
+            </p>
+        </li>
+    </ol>
+    <script src="http://static.tumblr.com/xz44nnc/o5lkyivqw/jquery-1.3.2.min.js"></script>
+    <script>
+    $('img.zoomable').css({ cursor: 'pointer' }).live('click', function() {
+        var img = $(this);
+        var bigImg = $('<img />').css({
+            'max-width': '100%',
+            'max-height': '100%',
+            'display': 'inline'
+        });
+        bigImg.attr({
+            src: img.attr('src'),
+            alt: img.attr('alt'),
+            title: img.attr('title')
+        });
+        var over = $('<div />').text(' ').css({
+            'height': '100%',
+            'width': '100%',
+            'background': 'rgba(0,0,0,.82)',
+            'position': 'fixed',
+            'top': 0,
+            'left': 0,
+            'opacity': 0.0,
+            'cursor': 'pointer',
+            'z-index': 9999,
+            'text-align': 'center'
+        }).append(bigImg).bind('click', function() {
+            $(this).fadeOut(300, function() {
+                $(this).remove();
+            });
+        }).insertAfter(this).animate({
+            'opacity': 1
+        }, 300);
+    });
+    </script>
+</body>
+
+</html>

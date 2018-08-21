@@ -1,0 +1,119 @@
+<html>
+
+<head>
+    <title>Кнопки в Animate
+    </title>
+    <style>
+        img {
+            box-shadow: 0 0 20px rgba(0, 0, 0, 0.31), 0 8.4px 21px rgba(0, 0, 0, .16428571428571428);
+        }
+    </style>
+</head>
+
+<body>
+    <h1>Креатив с несколькими кнопками</h1>
+    <ol>
+        <li>
+            <p>Скачайте шаблон для баннера с несколькими кнопками
+                <a href="https://yadi.sk/d/6A5QWT-f3aKBsv">https://yadi.sk/d/6A5QWT-f3aKBsv</a>
+            </p>
+        </li>
+        <li>
+            <p>
+                <p>Создайте в Adobe Animate проект HTML5 Canvas (или откройте уже существующий)</p>
+                <p>
+                    <img class="zoomable" style='width:40%;' src="manual_img/1.png" />
+                </p>
+            </p>
+        </li>
+        <li>
+            <p>При добавлении кнопок (buttons) или вложенных в сцену клипов (movie clips) важно задавать им instance name, чтобы потом можно было добавить клик к нужным кнопкам. Для простоты лучше давать кнопкам названия button1 - button9<br>
+            Подробнее про кнопки можно прочитать <a href="buttons.html">в этой статье</a><br>
+            О том как сделать прозрачные кнопки <a href="rez.html">в этой</a>
+            </p>
+            <p><img class="zoomable" style='width:40%;' src="nt/2.png" /></p>
+        </li>
+        <li>
+            <p>Добавьте в проект слой Actions (в него мы добавим код для работоспособности кнопок)</p>
+            <p><img class="zoomable" style='width:40%;' src="nt/3.png" /></p>
+        </li>
+        <li>
+            <p>Откройте окно для написания кода</p>
+            <p><img class="zoomable" style='width:40%;' src="nt/4.png" /></p>
+        </li>
+        <li>
+            <p>
+                Далее нам нужно будет модифицировать код, который мы пропишем в слой Actions
+                <br> 
+                <code><br>
+                window.buttons.push( <br>
+                //Пропишите через запятую пути кнопок, добавив вначале this<br>
+                <br>
+                //Конец места для кнопок <br>
+                );<br> 
+                <br>
+                </code>
+                Если кнопка находится в главной сцене, то пропишите её instance name сразу после this, например<br><br> <code>this.button1</code><br>
+                <br> Если кнопка находится внутри вложенной сцены, то после this пропишите сначала instance name сцены, а потом уже instance name кнопки: <br><br>
+                <code>this.scene_instance_name.button2</code><br><br>
+                После модификации код, который мы пропишем в слой Actions будет выглядеть следующим образом:<br>
+                <code><br>
+                 window.buttons.push( <br>
+                //Пропишите через запятую пути кнопок, добавив вначале this<br>
+                this.button1, this.scene_instance_name.button2<br>
+                //Конец места для кнопок <br>
+                );<br> 
+                <br> 
+                </code>
+            </p>
+            <p><img class="zoomable" style='width:40%;' src="nt/5.png" /></p>
+        </li>
+        <li>
+            <p>
+                Откройте параметры публикации и подключите шаблон из первого пункта и опубликуйте проект, выбрав нужную директорию.
+            </p>
+            <p><img class="zoomable" style='width:40%;' src="nt/6.png" /></p>
+        </li>
+        <li>
+            <p>
+                После публикации проекта заархивируйте его в формате .zip. Ваш креатив готов для загрузки в баннер ADFOX.
+            </p>
+        </li>
+    </ol>
+    <script src="http://static.tumblr.com/xz44nnc/o5lkyivqw/jquery-1.3.2.min.js"></script>
+    <script>
+    $('img.zoomable').css({ cursor: 'pointer' }).live('click', function() {
+        var img = $(this);
+        var bigImg = $('<img />').css({
+            'max-width': '100%',
+            'max-height': '100%',
+            'display': 'inline'
+        });
+        bigImg.attr({
+            src: img.attr('src'),
+            alt: img.attr('alt'),
+            title: img.attr('title')
+        });
+        var over = $('<div />').text(' ').css({
+            'height': '100%',
+            'width': '100%',
+            'background': 'rgba(0,0,0,.82)',
+            'position': 'fixed',
+            'top': 0,
+            'left': 0,
+            'opacity': 0.0,
+            'cursor': 'pointer',
+            'z-index': 9999,
+            'text-align': 'center'
+        }).append(bigImg).bind('click', function() {
+            $(this).fadeOut(300, function() {
+                $(this).remove();
+            });
+        }).insertAfter(this).animate({
+            'opacity': 1
+        }, 300);
+    });
+    </script>
+</body>
+
+</html>
