@@ -10,7 +10,12 @@
     <ol>
         <li>
             <p>Скачайте шаблон для баннера с несколькими кнопками
-                <a href="https://yadi.sk/d/bnK0RH7e3aFgyt">https://yadi.sk/d/bnK0RH7e3aFgyt</a>
+                <!-- <a href="https://yadi.sk/d/bnK0RH7e3aFgyt">https://yadi.sk/d/bnK0RH7e3aFgyt</a> -->
+                <ul>
+                    <li><a href="https://yadi.sk/d/4K1qcOsWX-3ndg">Adobe Animate CC версии 16.0 и выше</a></li>
+                    <li><a href="https://yadi.sk/d/Ga6rqKrvNCfAXA">Adobe Animate CC версии 15.2 и выше</a></li>
+                    <li><a href="https://yadi.sk/d/188VrHzT3-SLbQ">Adobe Animate CC версии 15.1 и ниже</a></li>
+                </ul>
             </p>
         </li>
         <li>
@@ -36,26 +41,32 @@
         <li>
             <p>
                 Далее нам нужно будет модифицировать код, который мы пропишем в слой Actions
-                <br> 
+                <br>
                 <code><br>
                 window.buttons.push( <br>
                 //Пропишите через запятую пути кнопок, добавив вначале this<br>
                 <br>
                 //Конец места для кнопок <br>
                 );<br> 
-                window.isButtonsReady = true; <br><br>
-                </code>
-                Если кнопка находится в главной сцене, то пропишите её instance name сразу после this, например<br><br> <code>this.button1</code><br>
-                <br> Если кнопка находится внутри вложенной сцены, то после this пропишите сначала instance name сцены, а потом уже instance name кнопки: <br><br>
-                <code>this.scene_instance_name.button2</code><br><br>
-                После модификации код, который мы пропишем в слой Actions будет выглядеть следующим образом:<br>
+                <br>
+                </code> Если кнопка находится в главной сцене, то пропишите её instance name сразу после this, например
+                <br>
+                <br> <code>this.button1</code>
+                <br>
+                <br> Если кнопка находится внутри вложенной сцены, то после this пропишите сначала instance name сцены, а потом уже instance name кнопки:
+                <br>
+                <br>
+                <code>this.scene_instance_name.button2</code>
+                <br>
+                <br> После модификации код, который мы пропишем в слой Actions будет выглядеть следующим образом:
+                <br>
                 <code><br>
                  window.buttons.push( <br>
                 //Пропишите через запятую пути кнопок, добавив вначале this<br>
                 this.button1, this.scene_instance_name.button2<br>
                 //Конец места для кнопок <br>
                 );<br> 
-                window.isButtonsReady = true; <br><br> 
+                <br> 
                 </code>
             </p>
             <p><img class="zoomable" style='width:40%;' src="nt/5.png" /></p>
