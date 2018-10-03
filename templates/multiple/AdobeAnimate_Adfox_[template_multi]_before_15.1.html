@@ -3,7 +3,6 @@
 <head>
 <meta charset="UTF-8">
 <title>Template_for_AdobeAnimate_CC_Adfox</title>
-<script type="text/javascript" src="//banners.adfox.ru/files/adfox_HTML5.js"></script>
 $CREATEJS_SCRIPTS
 $SCRIPT_START
 
@@ -65,14 +64,15 @@ $SCRIPT_END
 	<canvas id="$CANVAS_ID" width="$WT" height="$HT" style="background-color:$BG"></canvas>
     <script type="text/javascript">
     var buttons = [];
-    setTimeout(function(){
+    var buttons = [];
+    setAdfox = function() {
       buttons.forEach(function(button, index) {
             button.addEventListener('click', function() {
                 var eventId = index + 1;
                 window.open(flashVars.reference + "@" + flashVars.events[eventId], flashVars.target)
             });
         });
-    }, 500);
+    }
     </script>
 </body>
 </html>

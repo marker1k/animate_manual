@@ -13,7 +13,6 @@
 <meta charset="UTF-8">
 <meta name="authoring-tool" content="$VERSION">
 <title>$TITLE</title>
-<script type="text/javascript" src="//banners.adfox.ru/files/adfox_HTML5.js"></script>
 <!-- write your code here -->
 $CENTER_STYLE
 $CREATEJS_LIBRARY_SCRIPTS
@@ -92,14 +91,14 @@ $SCRIPT_END
     $PRELOADER_DIV
     <script type="text/javascript">
     var buttons = [];
-    setTimeout(function(){
+    setAdfox = function() {
       buttons.forEach(function(button, index) {
             button.addEventListener('click', function() {
                 var eventId = index + 1;
                 window.open(flashVars.reference + "@" + flashVars.events[eventId], flashVars.target)
             });
         });
-    }, 500);
+    }
     </script>
 </body>
 </html>
