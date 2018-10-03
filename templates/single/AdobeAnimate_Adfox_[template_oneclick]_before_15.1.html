@@ -1,0 +1,73 @@
+<!DOCTYPE html >
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Template_for_AdobeAnimate_CC_Adfox</title>
+<script type="text/javascript" src="//banners.adfox.ru/files/adfox_HTML5.js"></script>
+$CREATEJS_SCRIPTS
+$SCRIPT_START
+
+    var flashVars = {
+      reference: "%request.reference%",
+      link: "%banner.user1%",
+      target: "%banner.target%",
+      rnd: parseInt("%request.place_random%") || parseInt("%system.random%"),
+      events: [
+            "",
+            "%banner.event1%",
+            "%banner.event2%",
+            "%banner.event3%",
+            "%banner.event4%",
+            "%banner.event5%",
+            "%banner.event6%",
+            "%banner.event7%",
+            "%banner.event8%",
+            "%banner.event9%",
+            "%banner.event10%",
+            "%banner.event11%",
+            "%banner.event12%",
+            "%banner.event13%",
+            "%banner.event14%",
+            "%banner.event15%",
+            "%banner.event16%",
+            "%banner.event17%",
+            "%banner.event18%",
+            "%banner.event19%",
+            "%banner.event20%",
+            "%banner.event21%",
+            "%banner.event22%",
+            "%banner.event23%",
+            "%banner.event24%",
+            "%banner.event25%",
+            "%banner.event26%",
+            "%banner.event27%",
+            "%banner.event28%",
+            "%banner.event29%",
+            "%banner.event30%"
+      ]
+    };
+function callClick(n) {
+    var link = ( n ? flashVars.events[n] : flashVars.link );
+    window.open(flashVars.reference + "@" + flashVars.link, flashVars.target);
+}
+
+function callEvent(n) {
+      (new Image()).src = flashVars.events[n]; 
+}
+
+var canvas, stage, exportRoot;
+function init() {
+	$CJS_INIT
+}
+$PLAYSOUND
+$SCRIPT_END
+</head>
+<body onload="init();" style="background-color:#D4D4D4;margin:0px;">
+	<canvas id="$CANVAS_ID" width="$WT" height="$HT" style="background-color:$BG"></canvas>
+    <script type="text/javascript">
+      var elem = document.getElementsByTagName("canvas")[0];
+      elem.style.cursor = "pointer";
+      elem.addEventListener("click", callClick, false);
+    </script>
+</body>
+</html>
