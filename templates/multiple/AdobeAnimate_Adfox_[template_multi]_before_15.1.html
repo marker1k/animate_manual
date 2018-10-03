@@ -67,6 +67,7 @@ $SCRIPT_END
     var buttons = [];
     setAdfox = function() {
       buttons.forEach(function(button, index) {
+            button.cursor = "pointer";
             button.addEventListener('click', function() {
                 var eventId = index + 1;
                 window.open(flashVars.reference + "@" + flashVars.events[eventId], flashVars.target)
