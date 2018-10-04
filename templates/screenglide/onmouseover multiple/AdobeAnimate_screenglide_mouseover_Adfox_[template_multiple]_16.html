@@ -112,37 +112,37 @@ $SCRIPT_END
 	</div>
     $PRELOADER_DIV
     <script>
-            var expanded, collapsed;
-            var buttons = [];
-            var elem = document.getElementsByTagName("canvas")[0];
-            elem.style.cursor = "pointer";
-            var setAdfox = function() {
-                  expanded.visible = false;
-                  stage.enableMouseOver();
+      var expanded, collapsed;
+      var buttons = [];
+      var elem = document.getElementsByTagName("canvas")[0];
+      elem.style.cursor = "pointer";
+      var setAdfox = function() {
+            expanded.visible = false;
+            stage.enableMouseOver();
       
-                  collapsed.on("mouseover", expand);
-                  collapsed.cursor = "pointer";
+            collapsed.on("mouseover", expand);
+            collapsed.cursor = "pointer";
       
-                  function expand() {
-                        expanded.visible = true;
-                        window.expandBanner();
-                  }
-      
-      
-                  elem.addEventListener("mouseout", collapse);
-                  expanded.cursor = "pointer";
-      
-                  function collapse() {
-                        expanded.visible = false;
-                        window.collapseBanner();
-                  }
-                  buttons.forEach(function(button, index) {
-                        button.addEventListener('click', function() {
-                              var eventId = index + 1;
-                              window.open(flashVars.reference + "@" + flashVars.events[eventId], flashVars.target)
-                  });
-        });
+            function expand() {
+                  expanded.visible = true;
+                  window.expandBanner();
             }
+      
+      
+            elem.addEventListener("mouseout", collapse);
+            expanded.cursor = "pointer";
+      
+            function collapse() {
+                  expanded.visible = false;
+                  window.collapseBanner();
+            }
+            buttons.forEach(function(button, index) {
+                  button.addEventListener('click', function() {
+                        var eventId = index + 1;
+                        window.open(flashVars.reference + "@" + flashVars.events[eventId], flashVars.target)
+            });
+        });
+      }
     </script>
 </body>
 </html>

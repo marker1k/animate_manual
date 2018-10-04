@@ -9,11 +9,17 @@
 -->
 <!--
       Animate CC Actions Usage Example:
-      
+
       //BEGIN
       //Поменяйте instance name если требуется
-      expanded = this.expanded;
       collapsed = this.collapsed;
+      expanded = this.expanded;
+      close = this.expanded.close;
+      window.buttons.push( 
+      //Пропишите через запятую пути кнопок, добавив вначале this
+      this.expanded.button1, this.expanded.button2
+      //Конец места для кнопок 
+      );
       setAdfox();
       //END
 -->
@@ -107,31 +113,36 @@ $SCRIPT_END
 	</div>
     $PRELOADER_DIV
     <script>
-            var expanded, collapsed;
-            var elem = document.getElementsByTagName("canvas")[0];
-            elem.style.cursor = "pointer";
-            elem.addEventListener("click", function() {
-                  callClick();
-            }, false);
-            var setAdfox = function() {
-                  expanded.visible = false;
-                  stage.enableMouseOver();
+    var buttons = [];
+    var elem = document.getElementsByTagName("canvas")[0];
+    elem.style.cursor = "pointer";
+    var setAdfox = function() {
+        expanded.visible = false;
+        stage.enableMouseOver();
       
-                  collapsed.on("mouseover", expand);
-                  collapsed.cursor = "pointer";
+        collapsed.on("click", expand);
+        collapsed.cursor = "pointer";
       
-                  function expand() {
-                        expanded.visible = true;
-                        window.expandBanner();
-                  }
-                  expanded.on("mouseout", collapse);
-                  expanded.cursor = "pointer";
+        function expand() {
+            expanded.visible = true;
+            window.expandBanner();
+        }
       
-                  function collapse() {
-                        expanded.visible = false;
-                        window.collapseBanner();
-                  }
-            }
+      
+        close.on("click", collapse);
+        expanded.cursor = "pointer";
+      
+        function collapse() {
+            expanded.visible = false;
+            window.collapseBanner();
+        }
+        buttons.forEach(function(button, index) {
+            button.addEventListener('click', function() {
+                var eventId = index + 1;
+                window.open(flashVars.reference + "@" + flashVars.events[eventId], flashVars.target)
+            });
+        });
+    }
     </script>
 </body>
 </html>
