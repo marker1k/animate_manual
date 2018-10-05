@@ -108,8 +108,8 @@ $SCRIPT_END
     $PRELOADER_DIV
     <script>
     var expanded, collapsed;
-    var bannerFrame = window.frameElement;
     var elem = document.getElementsByTagName("canvas")[0];
+    var bannerFrame = window.frameElement ? window.frameElement : elem;
     document.body.style.cursor = "pointer";
     elem.addEventListener("click", function() {
         callClick();
