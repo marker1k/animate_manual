@@ -117,6 +117,7 @@ $SCRIPT_END
             collapsed.cursor = "pointer";
       
             function expand() {
+                collapsed.visible = false;
                 expanded.visible = true;
                 window.expandBanner();
             }
@@ -125,6 +126,7 @@ $SCRIPT_END
       
             function collapse() {
                 expanded.visible = false;
+                collapsed.visible = true;
                 window.collapseBanner();
             }
             expanded.addEventListener("click", function(){

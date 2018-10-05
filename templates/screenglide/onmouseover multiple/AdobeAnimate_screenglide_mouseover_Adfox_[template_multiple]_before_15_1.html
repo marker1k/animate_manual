@@ -73,31 +73,27 @@ $SCRIPT_END
 	<canvas id="$CANVAS_ID" width="$WT" height="$HT" style="background-color:$BG"></canvas>
     <script>
       var expanded, collapsed;
+      var bannerFrame = window.frameElement;
       var buttons = [];
       var elem = document.getElementsByTagName("canvas")[0];
-      elem.style.cursor = "pointer";
       var setAdfox = function() {
             expanded.visible = false;
             stage.enableMouseOver();
       
-            collapsed.on("mouseover", expand);
-            collapsed.cursor = "pointer";
-      
-            function expand() {
+            bannerFrame.addEventListener("mouseover", function(){
+                  collapsed.visible = false;
                   expanded.visible = true;
                   window.expandBanner();
-            }
+            });      
       
-      
-            elem.addEventListener("mouseout", collapse);
-            expanded.cursor = "pointer";
-      
-            function collapse() {
+            bannerFrame.addEventListener("mouseout", function(){
                   expanded.visible = false;
+                  collapsed.visible = true;
                   window.collapseBanner();
-            }
+            });
+
             buttons.forEach(function(button, index) {
-                  button.addEventListener('click', function() {
+                  button.addEventListener("click", function() {
                         var eventId = index + 1;
                         window.open(flashVars.reference + "@" + flashVars.events[eventId], flashVars.target)
             });

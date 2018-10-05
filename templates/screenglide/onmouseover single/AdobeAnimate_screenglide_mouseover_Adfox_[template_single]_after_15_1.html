@@ -101,29 +101,27 @@ $SCRIPT_END
     $PRELOADER_DIV
     <script>
     var expanded, collapsed;
+    var bannerFrame = window.frameElement;
     var elem = document.getElementsByTagName("canvas")[0];
-    elem.style.cursor = "pointer";
+    document.body.style.cursor = "pointer";
     elem.addEventListener("click", function() {
         callClick();
     }, false);
     var setAdfox = function() {
         expanded.visible = false;
         stage.enableMouseOver();
-      
-        collapsed.on("mouseover", expand);
-        collapsed.cursor = "pointer";
-      
-        function expand() {
+    
+        bannerFrame.addEventListener("mouseover", function() {
+            collapsed.visible = false;
             expanded.visible = true;
             window.expandBanner();
-        }
-        expanded.on("mouseout", collapse);
-        expanded.cursor = "pointer";
-      
-        function collapse() {
+        });
+    
+        bannerFrame.addEventListener("mouseleave", function() {
             expanded.visible = false;
+            collapsed.visible = true;
             window.collapseBanner();
-        }
+        });
     }
     </script>
 </body>
