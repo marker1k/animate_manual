@@ -1,0 +1,177 @@
+<html>
+
+<head>
+    <title>Manual
+    </title>
+    <style>
+    img {
+        box-shadow: 0 0 20px rgba(0, 0, 0, 0.31), 0 8.4px 21px rgba(0, 0, 0, .16428571428571428);
+    }
+
+    #wrapper {
+        width: 800px;
+        margin: 0 auto;
+    }
+    .spoil {
+      text-decoration: underline;
+      cursor: pointer;
+    }
+    </style>
+</head>
+
+<body>
+    <div id="wrapper">
+        <h1>Баннер с расхлопом</h1>
+        <p>
+            Подготовить баннер этого типа можно воспользовавшись одним из наших шаблонов, которые покрывают наиболее распространённые сценарии (одна кликабельная область и расхлоп по наведению; несколько кликабельных областей и расхлоп по наведению; одна кликабельная область и расхлоп/схлоп по клику; несколько кликабельных областей и расхлоп/схлоп по клику).
+        </p>
+        <h2>Шаблоны</h2>
+        <p>
+            <ul>
+                <li>Одна кликабельная область и расхлоп по наведению:</li>
+                <li>Несколько кликабельных областей и расхлоп по наведению</li>
+                <li>Одна кликабельная область и расхлоп/схлоп по клику</li>
+                <li>Несколько кликабельных областей и расхлоп/схлоп по клику</li>
+            </ul>
+        </p>
+        <h2>Подготовка баннера</h2>
+        <p>Первые два шага, добавление instance name и шаблона, являются общими для всех случаев.</p>
+        <ol>
+            <li>
+                <p>Подготовьте в Adobe Animate CC креатив<br>
+                    На разных слоях разместите два symbol, которые будут соответствовать баннеру в схлопнутом и расхлопнутом состояниях, плюс внутри расхлопнутого movie clip сделайте кнопку закрыть<br>
+                    Так же задайте им instance name, подробнее instance names можно почитать в соответствующей <a href="buttons_instance_name.html" target="_blank">инструкции</a><br>
+                </p>
+                <p>
+                    <img class="zoomable" style='width:80%;' src="screenglide/1.gif" />
+      </p>
+            </li>
+            <li>
+                <p>
+                    Подключите нужный шаблон ADFOX к проекту.
+                </p>
+                <p>
+                    <img class="zoomable" style='width:80%;' src="screenglide/2.gif" />
+      </p>
+            </li>
+            <li>
+                <p>
+                    Пропишите код в слой Actions.
+                </p>
+                <p>
+                    <img class="zoomable" style='width:80%;' src="screenglide/3.gif" />
+      </p>
+            </li>
+            <li>
+                <p>
+                    Шаги по заданию логики работы баннера будут отличаться для разных типов шаблонов:<br>
+                </p>
+                <p>
+                    <div class="spoiler" data-spoiler-link="1">
+                        <span class="spoil">Одна кликабельная область и расхлоп по наведению<span>
+                    </div>
+                    <div class="spoiler-content" data-spoiler-link="1">
+                        <p>
+                          <code>
+                            //Поменяйте instance name если требуется<br>
+                            expanded = this.expanded;<br>
+                            collapsed = this.collapsed;<br>
+                            setAdfox();<br><br>
+                          </code>
+                        </p>
+                    </div>
+                    <div class="spoiler" data-spoiler-link="2">
+                        <span class="spoil">Несколько кликабельных областей и расхлоп по наведению<span>
+                    </div>
+                    <div class="spoiler-content" data-spoiler-link="2">
+                        <p>
+                          <code>
+                              //Поменяйте instance name если требуется<br>
+                              expanded = this.expanded;<br>
+                              collapsed = this.collapsed;<br>
+                              window.buttons.push( <br>
+                              //Пропишите через запятую пути кнопок, добавив вначале this<br>
+                              this.expanded.button1, this.expanded.button2, this.expanded.button3, this.expanded.button4<br>
+                              //Конец места для кнопок <br>
+                              );<br>
+                              setAdfox();<br>
+                          </code>
+                        </p>
+                    </div>
+                    <div class="spoiler" data-spoiler-link="3">
+                        <span class="spoil">Одна кликабельная область и расхлоп/схлоп по клику<span>
+                    </div>
+                    <div class="spoiler-content" data-spoiler-link="3">
+                        <p>
+                          <code>
+                            //Поменяйте instance name если требуется<br>
+                            expanded = this.expanded;<br>
+                            collapsed = this.collapsed;<br>
+                            close = this.expanded.close;<br>
+                            setAdfox();<br>
+                          </code>
+                        </p>
+                    </div>
+                    <div class="spoiler" data-spoiler-link="4">
+                        <span class="spoil">Несколько кликабельных областей и расхлоп/схлоп по клику<span>
+                    </div>
+                    <div class="spoiler-content" data-spoiler-link="4">
+                        <p>
+                          <code>
+                              //Поменяйте instance name если требуется<br>
+                              collapsed = this.collapsed;<br>
+                              expanded = this.expanded;<br>
+                              close = this.expanded.close;<br>
+                              window.buttons.push( <br>
+                              //Пропишите через запятую пути кнопок, добавив вначале this<br>
+                              this.expanded.button1, this.expanded.button2<br>
+                              //Конец места для кнопок <br>
+                              );<br>
+                              setAdfox();<br>
+                          </code>
+                        </p>
+                    </div>
+                </p>
+            </li>
+        </ol>
+    </div>
+    <script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
+    <script src="https://le717.github.io/jquery-spoiler/lib/prism.js"></script>
+    <script src="https://le717.github.io/jquery-spoiler/jquery.spoiler.min.js"></script>
+    <script>
+    $(".spoiler").spoiler();
+    $('img.zoomable').css({ cursor: 'pointer' }).on('click', function() {
+        var img = $(this);
+        var bigImg = $('<img />').css({
+            'max-width': '100%',
+            'max-height': '100%',
+            'display': 'inline'
+        });
+        bigImg.attr({
+            src: img.attr('src'),
+            alt: img.attr('alt'),
+            title: img.attr('title')
+        });
+        var over = $('<div />').text(' ').css({
+            'height': '100%',
+            'width': '100%',
+            'background': 'rgba(0,0,0,.82)',
+            'position': 'fixed',
+            'top': 0,
+            'left': 0,
+            'opacity': 0.0,
+            'cursor': 'pointer',
+            'z-index': 9999,
+            'text-align': 'center'
+        }).append(bigImg).bind('click', function() {
+            $(this).fadeOut(300, function() {
+                $(this).remove();
+            });
+        }).insertAfter(this).animate({
+            'opacity': 1
+        }, 300);
+    });
+    </script>
+</body>
+
+</html>
