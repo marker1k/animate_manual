@@ -124,10 +124,11 @@ $SCRIPT_END
             close.on("click", collapse);
             close.cursor = "pointer";
       
-            function collapse() {
+            function collapse(event) {
                 expanded.visible = false;
                 collapsed.visible = true;
                 window.collapseBanner();
+                event.stopImmediatePropagation();
             }
             expanded.addEventListener("click", function(){
                 callClick();
