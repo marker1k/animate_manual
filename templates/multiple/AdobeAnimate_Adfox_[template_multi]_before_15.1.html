@@ -48,7 +48,7 @@ $SCRIPT_START
     };
 function callClick(n) {
       var link = ( n ? flashVars.events[n] : flashVars.link );
-      window.open(flashVars.reference + "@" + flashVars.link, flashVars.target);
+      window.open(flashVars.reference + "@" + link, flashVars.target);
 }
 
 function callEvent(n) {
@@ -71,7 +71,7 @@ $SCRIPT_END
             button.cursor = "pointer";
             button.addEventListener('click', function() {
                 var eventId = index + 1;
-                window.open(flashVars.reference + "@" + flashVars.events[eventId], flashVars.target)
+                callClick(eventId);
             });
         });
     }
