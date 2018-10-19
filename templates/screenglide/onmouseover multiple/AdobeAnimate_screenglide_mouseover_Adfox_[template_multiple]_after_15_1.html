@@ -26,8 +26,8 @@
 <head>
 <meta charset="UTF-8">
 <meta name="authoring-tool" content="$VERSION">
+<meta name="description" content="adfox_template">
 <title>$TITLE</title>
-<script type="text/javascript" src="//banners.adfox.ru/files/adfox_HTML5.js"></script>
 <!-- write your code here -->
 $CENTER_STYLE
 $CREATEJS_LIBRARY_SCRIPTS
@@ -80,7 +80,7 @@ function init() {
     };
 function callClick(n) {
       var link = ( n ? flashVars.events[n] : flashVars.link );
-      window.open(flashVars.reference + "@" + flashVars.link, flashVars.target);
+      window.open(flashVars.reference + "@" + link, flashVars.target);
 }
 
 function callEvent(n) {
