@@ -69,7 +69,7 @@ function init() {
     };
 function callClick(n) {
       var link = ( n ? flashVars.events[n] : flashVars.link );
-      window.open(flashVars.reference + "@" + flashVars.link, flashVars.target);
+      window.open(flashVars.reference + "@" + link, flashVars.target);
 }
 
 function callEvent(n) {
@@ -100,7 +100,9 @@ $SCRIPT_END
   <script type="text/javascript">
       var elem = document.getElementsByTagName("canvas")[0];
       elem.style.cursor = "pointer";
-      elem.addEventListener("click", callClick, false);
+      elem.addEventListener("click", function(){
+        callClick();
+      }, false);
   </script>
 </body>
 </html>
